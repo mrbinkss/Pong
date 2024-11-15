@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Ball : MonoBehaviour
 {
     public float speed = 300f;
     public Vector2 direction {  get; private set; }
     public new Rigidbody2D rigidbody {  get; private set; }
+
+    private Vector2 _startingPostition;
 
     public void Awake()
     {
@@ -12,12 +14,21 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     private void Start()
     {
-        direction = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f));
+        _startingPostition = transform.position;
+        AddStartingForce();
+    }
+    private void AddStartingForce()
+    {
+        direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
 
         this.rigidbody.AddForce(direction * this.speed);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public void Reset()
     {
-        Debug.Log("Collided");
+        this.rigidbody.linearVelocity = Vector3.zero;
+        this.rigidbody.position = Vector3.zero;
+
+        AddStartingForce();
     }
 }
