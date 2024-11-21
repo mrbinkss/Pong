@@ -23,6 +23,15 @@ public class Ball : MonoBehaviour
 
         this.rigidbody.AddForce(direction * this.speed);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Contains("Paddle"))
+        {
+            speed += 60;
+            direction = -direction;
+            this.rigidbody.AddForce(direction * this.speed);
+        }
+    }
 
     public void Reset()
     {

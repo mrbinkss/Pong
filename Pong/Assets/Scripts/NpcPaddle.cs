@@ -33,4 +33,16 @@ public class NpcPaddle : MonoBehaviour
     {
         this.rigidbody.AddForce(direction * speed);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Ball ball = collision.gameObject.GetComponent<Ball>();
+
+        if (ball == null) return;
+
+        if(collision.gameObject.name == "Ball")
+        {
+            Vector2 normal = collision.GetContact(0).normal;
+            ball.rigidbody.AddForce(normal * -10f);
+        }
+    }
 }
