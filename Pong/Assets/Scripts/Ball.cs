@@ -3,6 +3,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public float speed = 300f;
+    private float startSpeed;
     public Vector2 direction {  get; private set; }
     public new Rigidbody2D rigidbody {  get; private set; }
 
@@ -11,6 +12,7 @@ public class Ball : MonoBehaviour
     public void Awake()
     {
         this.rigidbody = GetComponent<Rigidbody2D>();
+        this.startSpeed = speed;
     }
     private void Start()
     {
@@ -37,6 +39,8 @@ public class Ball : MonoBehaviour
     {
         this.rigidbody.linearVelocity = Vector3.zero;
         this.rigidbody.position = Vector3.zero;
+
+        this.speed = startSpeed;
 
         AddStartingForce();
     }

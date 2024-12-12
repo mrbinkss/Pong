@@ -1,22 +1,27 @@
+using Unity.Properties;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameLogic : MonoBehaviour
 {
-    public Ball ball; 
+    public Ball ball;
+    public UIDocument scoreBoard;
 
-    private int _playerScore = 0;
-    private int _computerScore = 0;
+    [SerializeField]
+    int playerScore;
+    [SerializeField]
+    int computerScore;
 
     public void playerScores(int score)
     {
-        _playerScore += score;
-        Debug.Log("Player now has " + _playerScore + " points");
+        playerScore += score;
+        Debug.Log("Player now has " + playerScore + " points");
         this.ball.Reset();
     }
     public void computerScores(int score)
     {
-        _computerScore += score;
-        Debug.Log("Computer now has " + _computerScore + " points");
+        computerScore += score;
+        Debug.Log("Computer now has " + computerScore + " points");
         this.ball.Reset();
     }
 }

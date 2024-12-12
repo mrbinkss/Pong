@@ -1,0 +1,13 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIScore.uss?fileID=7433441132597879392&amp;guid=15b88d3d11134e2448ab66087e771e93&amp;type=3#UIScore" />
+    <engine:VisualElement name="Panel" class="panel" style="flex-grow: 1;">
+        <engine:VisualElement name="Score" style="flex-grow: 1;">
+            <engine:Label text="Player: 0" name="PlayerScoreLabel" data-source-type="GameLogic, Assembly-CSharp" data-source-path="playerScore">
+                <Bindings>
+                    <engine:DataBinding property="text" data-source-path="playerScore" data-source-type="GameLogic, Assembly-CSharp" binding-mode="ToTarget" />
+                </Bindings>
+            </engine:Label>
+            <engine:Label text="Opponent: 0" name="Label" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
